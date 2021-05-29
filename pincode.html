@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>search by pincode</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="C:\Users\welcome\Desktop\Progs'\JS\jquery-3.6.0.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$("#btnSearch").click(function() {
+				pincode = $("#search").val();
+				var xhr = new XMLHttpRequest({mozSystem: true});
+				xhr.open("GET", "http://pin-codes.in/api/picode/"+pincode, true);
+				xhr.onreadystatechange = function () {
+					if(xhr.readyState==4){
+						obj = JSON.parse(xhr.responseText);
+						result = "<li>Post Office: "+obj.PostOffice + "</li>";
+						result = "<li>District: "+obj.District + "</li>";
+						result = "<li>State: "+obj.State + "</li>";
+						console.log(result);
+						$("#searchRes").html(result);
+					}
+				}
+				xhr.send();
+			});
+		});
+	</script>
+	<style type="text/css">
+		html{
+
+		}
+	</style>
+</head>
+<body>
+<input type="search" name="search" value="" placeholder="enter pincode" id="search" autofocus/>
+<button id="btnSearch">search</button>
+<br>
+<ul id="searchRes">
+	
+</ul>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Guess the number</title>
+	<link rel="icon" type="image/jpg" href="icon2.jpg">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	
+</head>
+<body>
+	<div>
+			<h1 id="h1"><img src="icon2.jpg" id="img">Guess the number game</h1>
+	<form>
+		Enter number (0 to 50): <input type="number" name="number" id="number">
+	</form>
+	<button id="gm" onclick="play()" class="blink">
+		check
+	</button>
+	<h2>
+		<h3 id="res"></h3>
+	</h2>
+		</div>
+
+</body>
+<script type="text/javascript">
+	function play() {
+			// var val = prompt("enter a number b/w 0 to 100");
+			var rand  = Math.floor((Math.random() * 50)+1);
+			var val = document.getElementById('number').value;
+			console.log(val);
+			if(val==rand){
+			document.getElementById('res').innerHTML = "Congratulations! you won";
+			// document.write("equal");
+			}
+			else if(val > rand){
+				document.getElementById('res').innerHTML = "You lose the game becoz the number was large <br> You should have entered "+rand;
+				// alert("You lose the game becoz the number was large.You should have entered " + rand);
+			}
+			else{
+				// document.getElementById('res').innerHTML = "You lose the game becoz the number was small <br> You should have entered "+rand;
+				alert( "You lose the game becoz the number was small.You should have entered "+rand);
+			}
+			// else{
+			// 	document.getElementById('res').innerHTML = " not equal";
+	 	// 	//	document.write("not equal");
+			// }
+	}
+</script>
+</html>
